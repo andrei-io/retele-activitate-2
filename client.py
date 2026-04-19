@@ -64,14 +64,32 @@ while True:
             este_conectat = False
 
     elif comanda == 'PUBLISH':
+        if not este_conectat:
+            print("EROARE LOCALA: Nu esti conectat la server.")
+            continue
+        if len(parti) < 2 or not parti[1].strip():
+            print("EROARE LOCALA: Trebuie furnizat un text dupa PUBLISH.")
+            continue
+            
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
     elif comanda == 'DELETE':
+        if not este_conectat:
+            print("EROARE LOCALA: Nu esti conectat la server.")
+            continue
+        if len(parti) < 2 or not parti[1].strip().isdigit():
+            print("EROARE LOCALA: Argumentul furnizat trebuie sa fie un numar intreg (ex: DELETE 1).")
+            continue
+            
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
     elif comanda == 'LIST':
+        if not este_conectat:
+            print("EROARE LOCALA: Nu esti conectat la server.")
+            continue
+            
         raspuns = trimite_comanda(intrare)
         print(raspuns)
 
